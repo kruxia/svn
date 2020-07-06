@@ -10,7 +10,6 @@ RUN apk update \
     && apk upgrade \
     && rm -rf /var/cache/apk/*
 
-WORKDIR /etc/apache2
 COPY ./dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 COPY ./default-svn.conf /etc/apache2/conf.d/default-svn.conf
 
