@@ -2,6 +2,7 @@ FROM alpine
 LABEL maintainer="Sean Harrison <sah@kruxia.com>"
 
 # -- subversion apache server --
+# NOTE: Installing apache2 on Alpine creates user apache -u 100 -g 101
 RUN apk update \
     && apk add \
         apache2 \
