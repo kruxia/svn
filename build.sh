@@ -16,7 +16,7 @@ while test $# -gt 0
 do
     case "$1" in
         --push)
-            docker push kruxia/svn
+            docker push kruxia/svn:latest
             docker push kruxia/svn:alpine
             docker push kruxia/svn:alpine-$TIMESTAMP-$SHORT_SHA
             ;;
