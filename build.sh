@@ -12,9 +12,14 @@ docker tag kruxia/svn:alpine kruxia/svn
 # docker build docker --file docker/buster-slim.Dockerfile --tag kruxia/svn:buster-slim
 # docker tag kruxia/svn:buster-slim kruxia/svn:buster-slim-$TIMESTAMP-$SHORT_SHA
 
-docker push kruxia/svn
-docker push kruxia/svn:alpine
-docker push kruxia/svn:alpine-$TIMESTAMP-$SHORT_SHA
-
-# docker push kruxia/svn:buster-slim
-# kruxia/svn:buster-slim-$TIMESTAMP-$SHORT_SHA
+while test $# -gt 0
+do
+    case "$1" in
+        --push)
+            docker push kruxia/svn
+            docker push kruxia/svn:alpine
+            docker push kruxia/svn:alpine-$TIMESTAMP-$SHORT_SHA
+            ;;
+    esac
+    shift
+done
