@@ -7,6 +7,7 @@ RUN apk update \
     && apk add \
         apache2 \
         apache2-webdav \
+        apache2-mod-wsgi \
         mod_dav_svn \
     && apk upgrade \
     && rm -rf /var/cache/apk/*
@@ -14,6 +15,7 @@ RUN apk update \
 COPY ./httpd.conf /etc/apache2/httpd.conf
 COPY ./dav_svn.conf /etc/apache2/conf.d/dav_svn.conf
 COPY ./default-svn.conf /etc/apache2/conf.d/default.conf
+COPY ./admin/ /var/admin/
 
 RUN mkdir -p /var/svn \
     && chown apache:apache -R /var/svn
